@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block jd %}
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		<fieldset class="form-group">
+			<div class="form-group">
+				{{ form.jd.label(class="form-control-label") }}
+				{{ form.jd(class="form-control") }}
+			</div>
+		</fieldset>
+		<div class="form-group">
+			{{ form.submit(class="btn btn-dark") }}
+		</div>
+	</form>
+{% endblock jd %}
+{% block res %}
+	{% if results|length!=0 %}
+		<hr/>
+		<table class="table table-hover table-bordered">
+			<thead class="thead-dark">
+				<th scope="col">#</th>
+				<th scope="col">ID</th>
+				<th scope="col">Relevance Score</th>
+				<th scope="col">Link</th>
+			</thead>	
+			{% for i in range(results['cid']|length) %}
+				<tr>
+				<td>{{ i+1 }}</td>
+				<td>{{ results['cid'][i] }}</td>
+				<td>{{ results['score'][i] }}</td>
+				<td><a href="/download/{{ results['path'][i] }}" target="_blank">Download</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
+{% endblock res %}
