@@ -1,0 +1,11 @@
+numpy
+scipy
+flask
+flask-wtf
+datefinder
+gensim 
+pandas
+texttract
+pickle
+nltk 
+spacy
